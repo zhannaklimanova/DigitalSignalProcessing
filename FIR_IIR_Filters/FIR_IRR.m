@@ -130,39 +130,23 @@
 % 0.939(e^{-j\pi}) = 1 + 0.939(cos(-\pi) + jsin(-\pi)) = 1 + 0.939(cos(-\pi)) 
 % = 1 - 0.939 = 0.0610$$
 % Part 3:
-% The frequency response of this filter is $H(e^{-j\omega_c}) = \frac{0.0610}{1+0.939e^{-2j\omega_c}}$
+% The frequency response of this filter is 
+% 
+% $$H\left(e^{j\omega}\right)= \frac{0.0610}{1+0.939e^{-2j\omega}} = \frac{0.0610}{1+0.939(\cos(-2\omega)+j\sin(-2\omega))} 
+% = \frac{0.0610}{(1+0.939\cos(2\omega))+(-0.939\sin(2\omega))j} $$
 % Magnitude Response
-% $$|H(e^{-j\omega_c})| = \frac{0.0610}{1+0.939e^{-2j\omega_c}} = \frac{0.0610}{1+0.939e^{-2j\frac{\pi}{2}}} 
-% = \frac{0.0610}{1 + 0.939(cos(-\pi) + jsin(-\pi))} = \frac{0.0610}{1 + 0.939(cos(-\pi))} 
-% = \frac{0.0610}{1 - 0.939} = \frac{0.0610}{0.0610} = 1 $$
+% $$\left|H\left(e^{j\omega}\right)\right| = \left|\frac{0.0610}{(1+0.939\cos(2\omega))+(-0.939\sin(2\omega))j}\right|= 
+% \frac{0.0610}{\sqrt{(1+0.939\cos(2\omega))^2+(-0.939\sin(2\omega))^2}}$$
 % 
-% Give magnitude and and phase response in general  formula. and then plug in 
-% the values
+% inputing the $\omega=\omega_c=\frac{\pi}{2}$, the magnitude is 1 which align 
+% with part 2
 % Phase Response
-% Starting from the frequency response $H(e^{j\omega_c}) = \frac{b_0}{1 + a_1e^{-j\omega_c} 
-% + a_2e^{-2j\omega_c}} = \frac{b_0}{1 + a_1cos(-\omega_c) + a_1jsin(-\omega_c) 
-% +  a_2cos(-2\omega_c) + a_2jsin(-2\omega_c)}$. 
+% $$\angle H(e^{j\omega}) = \angle\left(\frac{0.0610}{(1+0.939\cos(2\omega))+(-0.939\sin(2\omega))j} 
+% \right) \\=\angle(0.0610)-\angle((1+0.939\cos(2\omega))+(-0.939\sin(2\omega))j) 
+% \\=0-\arctan\left(\frac{-0.939\sin(2\omega)}{1+0.939\cos(2\omega)}\right) \\=-\arctan\left(\frac{-0.939\sin(2\omega)}{1+0.939\cos(2\omega)}\right)$$
 % 
-% Using the odd/even property of sin and cosine function $H(e^{j\omega_c})$ 
-% can be simplified:
-% 
-% $$H(e^{j\omega_c}) = \frac{b_0}{1 + a_1cos(\omega_c) - a_1jsin(\omega_c) +  
-% a_2cos(2\omega_c) - a_2jsin(2\omega_c)} = \frac{b_0}{1 + a_1cos(\omega_c) +  
-% a_2cos(\omega_c) - a_1jsin(2\omega_c) - a_2jsin(2\omega_c)}$$
-% 
-% Using the imaginary and real parts the of the frequency response:
-% 
-% $$\angle H(e^{-j\omega_c}) = \tan^{-1}\left(\frac{-(- a_1sin(\omega_c) - a_2sin(2\omega_c))}{1 
-% + a_1cos(\omega_c) +  a_2cos(2\omega_c) }\right) = -\tan^{-1}\left(\frac{- a_1sin(\omega_c) 
-% - a_2sin(2\omega_c)}{1 + a_1cos(\omega_c) +  a_2cos(2\omega_c)}\right)$$
-% 
-% Plugging in the values for $a_1$ and $a_2$:
-% 
-% $$\angle H(e^{-j\omega_c}) = -\tan^{-1}\left(\frac{- 0*sin(\frac{\pi}{2}) 
-% - 0.939*sin(\frac{2\pi}{2})}{1 + 0*cos(\frac{\pi}{2}) + 0.939*cos(\frac{2\pi}{2}) 
-% }\right) = -\tan^{-1}\left(\frac{-0.939*sin(\frac{2\pi}{2})}{1 + 0.939*cos(\frac{2\pi}{2})}\right) 
-% = -\tan^{-1}\left(\frac{-0.939*0}{1 + 0.939*-1}\right) = -\tan^{-1}\left(\frac{- 
-% 0}{0.939}\right) = 0$$
+% inputing the $\omega=\omega_c=\frac{\pi}{2}$, the angle of  0 which align 
+% with part 2
 % Part 4:
 % The two-pole filter can be defined by the following difference equation: $y[n] 
 % = b_0x[n] - a_1y[n-1] - a_2y[n-2]$. Where $a_1 = 0$ and $a_2 = 0.939$ so the 
@@ -171,7 +155,7 @@
 % System diagram in direct form 1:
 % 
 % 
-%% 
+% 
 % *Sources used to complete this section:*
 %% 
 % * <https://www.dsprelated.com/freebooks/filters/Two_Pole.html https://www.dsprelated.com/freebooks/filters/Two_Pole.html>
